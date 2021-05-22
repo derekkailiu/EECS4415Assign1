@@ -16,7 +16,6 @@ def main():
     parser.add_argument("filename")
     args = parser.parse_args()
 
-    i=0;
     # Scan file
     with open(args.filename) as f, open("yelp-network.txt", "w") as w:
         reader_source = csv.reader(f)
@@ -30,10 +29,6 @@ def main():
                     str2 = str + '\s'+row[0]
                     if str1 not in result and str2 not in result:
                         result.append(str1)
-            i+=1
-            print(i)
-            if i>=1000:
-                break
 
         #print result to file
         for str in result:
