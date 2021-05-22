@@ -42,13 +42,15 @@ def main():
     
         #print I
         print(str(count_node)+':|N| '+str(count_edge)+':|E|',file=w)
+        print('\n',file=w)
         #print II
         print('nodeID:nodeDegree\n', file=w)
         for i in range(count_node):
             print(str(node[i])+':'+str(node_degree[i]), file=w)
-
-
-
+        print('\n',file=w)
+        #print III
+        avg_node_degree = sum(node_degree)/count_node
+        print('avgNodeDegree:{:2f}'.format(avg_node_degree), file=w)
 
 
 
