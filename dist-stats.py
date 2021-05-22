@@ -68,14 +68,15 @@ def main():
 
     sortedZippedListReview = sorted(zipListReview,reverse=True,key=lambda item:item[2])
 
-
-    print('category:#restaurants')
-    for i in sortedZippedList:
-        print('{}:{}'.format(i[1], i[0]))
-    print('\n')
-    print('category:#reviews:avg_stars\n')
-    for i in sortedZippedListReview:
-        print('{}:{}:{:.2f}'.format(i[1], i[2], i[3]))
+    # print to file
+    with open('p2_output.txt', 'w') as w:
+        print('category:#restaurants',file=w)
+        for i in sortedZippedList:
+            print('{}:{}'.format(i[1], i[0]),file=w)
+        print('\n',file=w)
+        print('category:#reviews:avg_stars\n',file=w)
+        for i in sortedZippedListReview:
+            print('{}:{}:{:.2f}'.format(i[1], i[2], i[3]),file=w)
 
     # Generate Graph
     top10Cat = []
