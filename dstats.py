@@ -14,12 +14,12 @@ def main():
     with open(sys.argv[1]) as f:
         reader=csv.reader(f)
         for row in reader:
-            city = row[4]
-            if city == sys.argv[2]:
+            city = row[4].upper()
+            if city == sys.argv[2].upper():
                 numOfBus+=1
                 avgStars+=float(row[9])
                 avgNumberOfReviews+=int(row[10])
-                if "Restaurant" in row[12]:
+                if "RESTAURANTS" in row[12].upper():
                     numOfRestaurants+=1
                     avgStarsRestaurants+=1
                     avgNumOfReviewsBus+=int(row[10])
