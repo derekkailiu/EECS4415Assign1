@@ -1,14 +1,10 @@
+# Name: Jianxian Wang
+# Student ID: 217557489
+# Name: Kai Liu
+# Student ID: 216624835
 
-def averageStars(rows, numOfRows):
-    total = 0
-    avg = 0
-    for row in rows:
-        # print(rows[9])
-        total = total + float(row[9])
-    avg = total / numOfRows
-    return avg
 
-def getRestaurants(rows):
+def getRestaurants(rows): #returns rows that only contains restaurants in its categories
     category = "RESTAURANT"
     result = []
     for row in rows:
@@ -16,7 +12,7 @@ def getRestaurants(rows):
             result.append(row)
     return result
 
-def restaurantCount(rows):
+def restaurantCount(rows): #returns count of restaurants
     category = "RESTAURANT"
     result = 0
     for row in rows:
@@ -24,13 +20,13 @@ def restaurantCount(rows):
             result = result + 1
     return result
 
-def getRowCount(rows):
+def getRowCount(rows): #returns number of rows
     result = 0
     for row in rows:
         result = result + 1
     return result
 
-def getAverage(rows, numOfRows, field):
+def getAverage(rows, numOfRows, field): #retruns average of values in 'field'
     total = 0
     for row in rows:
         total = total + float(row[field])
@@ -40,9 +36,7 @@ import csv
 import sys
 
 def main(argv):
-    print(argv)
-
-
+  
     filename = "./" + argv[1]
 
     inputCity = argv[2]
@@ -63,27 +57,22 @@ def main(argv):
     f_isOpen = 11
     f_categories = 12
 
-    file = open('./sample.csv', 'w+', encoding = 'utf8', newline = '')
-    with file:
-        writer = csv.writer(file)
-        
-        with open(filename, 'r', encoding='utf8') as csvfile:
-            csvreader = csv.reader(csvfile)
+    with open(filename, 'r', encoding='utf8') as csvfile: #opens the .csv file
+        csvreader = csv.reader(csvfile)
 
-            fields = next(csvreader)
+        fields = next(csvreader)
 
-            for row in csvreader:
-                if inputCity.upper() in row[4].upper():
-        
-                    rows.append(row)
-                    counter = counter + 1
+        for row in csvreader:
+            if inputCity.upper() in row[4].upper(): #check if row contains city specified in argument
+    
+                rows.append(row) 
+                counter = counter + 1
             
-            
-        # writer.writerows(rows)
+    #std output
     print("numOfBus:%d"%counter)
-    print("avgStars:" + inputCity + " is :%f"%averageStars(rows, counter))
+    print("avgStars:%f"%getAverage(rows, counter, f_stars))
     print("numOfRestaurants:%d"%restaurantCount(rows))
-    print("avgStarsRestaurants:%f"%averageStars(getRestaurants(rows),getRowCount(getRestaurants(rows))) )
+    print("avgStarsRestaurants:%f"%getAverage(getRestaurants(rows),getRowCount(getRestaurants(rows)), f_stars))
     print("avgNumOfReviews:%f"%getAverage(rows, counter, f_review_count))
     print("avgNumOfReviewsBus:%f"%getAverage(getRestaurants(rows), getRowCount(getRestaurants(rows)), f_review_count))
 main(sys.argv)

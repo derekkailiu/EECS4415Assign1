@@ -1,0 +1,13 @@
+team member 1*****
+First Name: Kai
+Last Name: Liu
+Student ID: 216624835
+Login: kliu67
+Yorku Email: kliu67@my.yorku.ca
+
+team member 2*****
+First Name: Jianxian
+last Name: Wang
+Student ID: 217557489
+Login: wangjx
+Yorku Email: wangjx@my.yorku.ca

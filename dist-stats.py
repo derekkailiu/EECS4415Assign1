@@ -1,3 +1,8 @@
+# Name: Jianxian Wang
+# Student ID: 217557489
+# Name: Kai Liu
+# Student ID: 216624835
+
 def getCatRows(rows, cat, field): #returns all rows that contain specified category
     result = []
     for row in rows:
@@ -54,11 +59,8 @@ import numpy
 
 
 def main(argv):
-    print(argv)
-
 
     filename = "./" + argv[1]
-
     inputCity = argv[2]
     fields = []
     rows = []
@@ -106,11 +108,11 @@ def main(argv):
             totalReviews = getTotal(catRows, getRowCount(catRows), f_review_count)
             avgStars = getAverage(catRows, getRowCount(catRows), f_stars)
 
-            print(d + ":" + str(dict[d]))
-            w.write(d + ":" + str(dict[d]) + '\n')
+            print(d + ":" + str(dict[d])) #std output
+            w.write(d + ":" + str(dict[d]) + '\n') #write to file
 
-            print(d + ":" + str(int(totalReviews)) + ":" + str(avgStars))
-            w2.write(d + ":" + str(int(totalReviews)) + ":" + str(avgStars) + '\n')
+            print(d + ":" + str(int(totalReviews)) + ":" + str(avgStars)) #std output
+            w2.write(d + ":" + str(int(totalReviews)) + ":" + str(avgStars) + '\n') #write to file
             if i < 10 :
         
                 top10Cat.append(d) #add top ten categories to list
