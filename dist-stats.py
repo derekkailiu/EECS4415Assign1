@@ -1,21 +1,3 @@
-
-def averageStars(rows, numOfRows):
-    total = 0
-    avg = 0
-    for row in rows:
-        # print(rows[9])
-        total = total + float(row[9])
-    avg = total / numOfRows
-    return avg
-
-def getRestaurants(rows):
-    category = "RESTAURANT"
-    result = []
-    for row in rows:
-        if category in (row[12]).upper():
-            result.append(row)
-    return result
-
 def getCatRows(rows, cat, field):
     result = []
     for row in rows:
@@ -77,8 +59,7 @@ def buildDict(rows, field, category):
 import csv
 import sys
 from collections import defaultdict
-import matplotlib.pyplot
-import numpy
+
 
 def main(argv):
     print(argv)
@@ -118,28 +99,30 @@ def main(argv):
         
                     rows.append(row)
                     counter = counter + 1
-            
-            
-        # writer.writerows(rows)
-    # print("numOfBus:%d"%counter)
-    # print("avgStars:" + inputCity + " is :%f"%averageStars(rows, counter))
-    # print("numOfRestaurants:%d"%restaurantCount(rows))
-    # print("avgStarsRestaurants:%f"%averageStars(getRestaurants(rows),getRowCount(getRestaurants(rows))) )
-    # print("avgNumOfReviews:%f"%getAverage(rows, counter, f_review_count))
-    # print("avgNumOfReviewsBus:%f"%getAverage(getRestaurants(rows), getRowCount(getRestaurants(rows)), f_review_count))
 
-    restaurants = getRestaurants(rows)
-    
-    parseField(restaurants,f_categories, ";")
-    # prints the number of restaurants per category
+    restaurants = getCatRows(rows, "Restaurants", f_categories)
+    parseField(rows, f_categories, ";")
+
     dict = buildDict(restaurants, f_categories, "restaurants")
     for d in dict:
         catRows = getCatRows(rows, d, f_categories)
         totalReviews = getTotal(catRows, getRowCount(catRows), f_review_count)
         avgStars = getAverage(catRows, getRowCount(catRows), f_stars)
+        
         print(d + ":" + str(dict[d]) + ":" + str(int(totalReviews)) + ":" + str(avgStars))
-
-  
+    with open("./test_output.csv", "w", encoding = 'utf8') as  w:
+        catCount = 0
+        rowCount = 0
+        for r in restaurants:
+            rowCount += 1
+            # print(r)
+            for cat in r[f_categories]:
+                if "Nightlife" in cat:
+                    catCount += 1
+                # print (cat)
+                
+        print(catCount)
+        print(rowCount)
    #create graph
   
 
