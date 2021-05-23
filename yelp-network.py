@@ -26,7 +26,7 @@ def main():
                 friends=[x.strip() for x in row[4].split(',')]
                 for str in friends:
                     str1 = row[0]+' '+ str
-                    str2 = str + '\s'+row[0]
+                    str2 = str + ' '+row[0]
                     if str1 not in result and str2 not in result:
                         result.append(str1)
 
