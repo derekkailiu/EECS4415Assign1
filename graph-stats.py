@@ -1,6 +1,9 @@
+# Name: Jianxian Wang
+# Student ID: 217557489
+# Name: Kai Liu
+# Student ID: 216624835
+
 import argparse
-
-
 
 def main():
     #vars
@@ -8,6 +11,7 @@ def main():
     count_node=0
     node=[]
     node_degree=[]
+
     # read args
     parser = argparse.ArgumentParser()
     parser.add_argument("filename")

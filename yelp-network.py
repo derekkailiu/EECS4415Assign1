@@ -1,9 +1,15 @@
+# Name: Jianxian Wang
+# Student ID: 217557489
+# Name: Kai Liu
+# Student ID: 216624835
+
 import csv
 import argparse
-import sys
+# import sys
 
 
-csv.field_size_limit(sys.maxsize)
+# Set csv field size limit to maximum
+# csv.field_size_limit(sys.maxsize)
 
 
 def main():
@@ -17,7 +23,7 @@ def main():
     args = parser.parse_args()
 
     # Scan file
-    with open(args.filename) as f, open("yelp-network.txt", "w") as w:
+    with open(args.filename, encoding='utf8') as f, open("yelp-network.txt", "w") as w:
         reader_source = csv.reader(f)
         #Skip header
         next(reader_source)
